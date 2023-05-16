@@ -2,4 +2,4 @@
 
 Uses Java Swing and AWT
 
-^soon
+<sup>soon</sup>

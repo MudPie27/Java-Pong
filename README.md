@@ -1,2 +1,5 @@
 # Pong
-Recreation of the videogame pong written in Java. 
+
+Uses Java Swing and AWT
+
+^soon

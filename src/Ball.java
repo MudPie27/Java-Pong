@@ -50,11 +50,11 @@ public class Ball extends Rectangle {
 
         // Check if the ball has gone off-screen
         if (x <= 0 || x >= GamePanel.GAME_WIDTH - BALL_DIAMETER) {
-            if (System.currentTimeMillis() - respawnTime >= 1500) {
+            if (System.currentTimeMillis() - timer >= 1500) {
                 respawn();
             }
         } else {
-            respawnTime = System.currentTimeMillis(); // Update the respawn time
+            timer = System.currentTimeMillis(); // Update the respawn time
         }
     }
 

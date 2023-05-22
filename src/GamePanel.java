@@ -47,6 +47,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		paddle1.move();
 		paddle2.move();
 		ball.move();
+		ball.paddleCollision(paddle1, paddle2);
+		ball.boundaryCollision();
 	}
 
 	public void run() {
@@ -86,10 +88,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		if (paddle2.y >= GAME_HEIGHT - Paddles.length) {
 			paddle2.y = GAME_HEIGHT - Paddles.length;
 		}
-	}
-	
-	public void ballPhysics() {
-		
 	}
 
 	@Override

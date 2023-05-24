@@ -3,7 +3,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class GamePanel extends JPanel implements Runnable, KeyListener {
-
     // set game screen size
     public static final int GAME_WIDTH = 800;
     public static final int GAME_HEIGHT = 600;

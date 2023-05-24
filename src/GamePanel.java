@@ -14,14 +14,17 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     public Graphics graphics;
     public Paddles paddle1, paddle2;
     public Ball ball;
-    public Score score; // Score object
+    public Score score; 
 
     public GamePanel() {
+
         paddle1 = new Paddles(0, (GAME_HEIGHT/2)-(Paddles.length/2));
         paddle2 = new Paddles(790, (GAME_HEIGHT/2)-(Paddles.length/2));
+
         ball = new Ball(380, 250);
-        score = new Score(); // Create an instance of Score
-        ball.setScore(score); // Pass the Score object to the Ball object
+
+        score = new Score();
+        ball.setScore(score); 
 
         this.setFocusable(true);
         this.addKeyListener(this);
@@ -43,13 +46,23 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         paddle1.draw(g);
         paddle2.draw(g);
         ball.draw(g);
-        score.draw(g); // Draw the score
+        score.draw(g); 
     }
 
     public void move() {
         paddle1.move();
         paddle2.move();
         ball.move();
+        
+        if (score.getScore1() == 3 || score.getScore2() == 3) {
+            resetGame();
+        }
+    }
+    
+    private void resetGame() {
+        paddle1 = new Paddles(0, (GAME_HEIGHT / 2) - (Paddles.length / 2));
+        paddle2 = new Paddles(790, (GAME_HEIGHT / 2) - (Paddles.length / 2));
+        ball.respawn();
     }
 
     public void run() {
@@ -87,8 +100,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         if (paddle2.y >= GAME_HEIGHT - Paddles.length) {
             paddle2.y = GAME_HEIGHT - Paddles.length;
         }
-        ball.boundaryCollision(); // Check ball boundary collision
-        ball.paddleCollision(paddle1, paddle2); // Check ball paddle collision
+        ball.boundaryCollision(); 
+        ball.paddleCollision(paddle1, paddle2);
     }
 
     @Override

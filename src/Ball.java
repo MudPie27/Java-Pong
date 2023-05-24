@@ -38,11 +38,6 @@ public class Ball extends Rectangle {
         }
     }
 
-    public void move() {
-        x += velocityX;
-        y += velocityY;
-    }
-
 	public void paddleCollision(Paddles paddle1, Paddles paddle2) {
         
         if (intersects(paddle1.getBounds2D()) || intersects(paddle2.getBounds2D())) {
@@ -73,6 +68,11 @@ public class Ball extends Rectangle {
         x = GamePanel.GAME_WIDTH / 2 - BALL_DIAMETER / 2;
         y = GamePanel.GAME_HEIGHT / 2 - BALL_DIAMETER / 2;
         initialMovement();
+    }
+
+    public void move() {
+        x += velocityX;
+        y += velocityY;
     }
 
     public void draw(Graphics g) {

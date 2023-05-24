@@ -54,8 +54,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         paddle2.move();
         ball.move();
         
-        if (score.getScore1() == 3 || score.getScore2() == 3) {
-            resetGame();
+        if ((score.getScore1() == 5) || (score.getScore2() == 5)) {
+            gameEnd();
         }
     }
 
@@ -77,7 +77,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         ball.paddleCollision(paddle1, paddle2);
     }
     
-    private void resetGame() {
+    private void gameEnd() {
         paddle1 = new Paddles(0, (GAME_HEIGHT / 2) - (Paddles.length / 2));
         paddle2 = new Paddles(790, (GAME_HEIGHT / 2) - (Paddles.length / 2));
         ball.respawn();

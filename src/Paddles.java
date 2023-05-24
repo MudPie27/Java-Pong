@@ -3,77 +3,84 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Paddles extends Rectangle {
-	
-	public int velocity;
-	public final int SPEED = 15; 
+	// class varaibles
 	public static int length = 100, width = 10;
+	// regular variables
+	public int velocity; 
+	public final int SPEED = 15; 
 	
-	public Paddles(int x, int y){
+	// constructor 
+	public Paddles(int x, int y) {
 	   super(x, y, width, length);
 	}
 	
+	// controls for player 1 (left paddle)
 	public void keyPressed1(KeyEvent e) {
 
 	    if(e.getKeyChar() == 'w'){
-	      changeDir(-SPEED);
-	      move();
+			updateVelocity(-SPEED); // method that updates velocity depending on which key is pressed
+			move(); // method that moves the paddle accordingly 
 	    }
 
 	    if(e.getKeyChar() == 's'){
-	      changeDir(SPEED);
-	      move();
+			updateVelocity(SPEED);
+			move();
 	    }
-	  }
+	}
 
-	  public void keyReleased1(KeyEvent e) {
+	 public void keyReleased1(KeyEvent e) {
 
-	    if(e.getKeyChar() == 'w'){
-	      changeDir(0);
-	      move();
+		if(e.getKeyChar() == 'w'){
+	    	updateVelocity(0);
+	    	move();
 	    }
 
 	    if(e.getKeyChar() == 's'){
-	      changeDir(0);
-	      move();
+			updateVelocity(0);
+			move();
 	    }
-	  }
+	}
 	
+	// controls for player 2 (right paddle)
 	public void keyPressed2(KeyEvent e) {
 
-	    if(e.getKeyCode() == KeyEvent.VK_UP){
-	      changeDir(-SPEED);
-	      move();
+		if(e.getKeyCode() == KeyEvent.VK_UP){
+			updateVelocity(-SPEED);
+			move();
 	    }
 
 	    if(e.getKeyCode() == KeyEvent.VK_DOWN){
-	      changeDir(SPEED);
-	      move();
+	    	updateVelocity(SPEED);
+			move();
 	    }
-	  }
+	}
 	
 	public void keyReleased2(KeyEvent e) {
 
 	    if(e.getKeyCode() == KeyEvent.VK_UP){
-	      changeDir(0);
-	      move();
+			updateVelocity(0);
+			move();
 	    }
 
 	    if(e.getKeyCode() == KeyEvent.VK_DOWN){
-	      changeDir(0);
-	      move();
+			updateVelocity(0);
+			move();
 	    }
-	  }
+	}
 	
-	 public void changeDir(int speed) {
-	    velocity = speed;
-     }
-	 
-	 public void move() {
+	// sets velocity to 0, 15 or =15 depending on which button is pressed/released
+	public void updateVelocity(int speed) {
+		velocity = speed;
+    }
+	
+	// moves the paddle according to velocity 
+	public void move() {
 	    y = y + velocity;
-     }
-	 
-	  public void draw(Graphics g) {
+    }
+	
+	// displays the paddles
+	public void draw(Graphics g) {
 	    g.setColor(Color.white);
 	    g.fillRect(x, y, width, length);
-     }
+    }
 }

@@ -58,6 +58,24 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
             resetGame();
         }
     }
+
+    public void checkCollision() {
+
+        if (paddle1.y <= 0) 
+            paddle1.y = 0;
+        
+        if (paddle1.y >= (GAME_HEIGHT - Paddles.length)) 
+            paddle1.y = (GAME_HEIGHT - Paddles.length);
+
+        if (paddle2.y <= 0) 
+            paddle2.y = 0;
+        
+        if (paddle2.y >= (GAME_HEIGHT - Paddles.length)) 
+            paddle2.y = (GAME_HEIGHT - Paddles.length);
+
+        ball.screenCollision(); 
+        ball.paddleCollision(paddle1, paddle2);
+    }
     
     private void resetGame() {
         paddle1 = new Paddles(0, (GAME_HEIGHT / 2) - (Paddles.length / 2));
@@ -84,24 +102,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
                 delta--;
             }
         }
-    }
-
-    public void checkCollision() {
-        if (paddle1.y <= 0) {
-            paddle1.y = 0;
-        }
-        if (paddle1.y >= GAME_HEIGHT - Paddles.length) {
-            paddle1.y = GAME_HEIGHT - Paddles.length;
-        }
-
-        if (paddle2.y <= 0) {
-            paddle2.y = 0;
-        }
-        if (paddle2.y >= GAME_HEIGHT - Paddles.length) {
-            paddle2.y = GAME_HEIGHT - Paddles.length;
-        }
-        ball.boundaryCollision(); 
-        ball.paddleCollision(paddle1, paddle2);
     }
 
     @Override

@@ -4,20 +4,22 @@ import java.awt.*;
 
 public class Score {
 
-    private int score1;
-    private int score2;
-    private Font scoreFont;
-    private boolean gameOver;
+    private int score1, score2;
     private String winnerText;
+
+    private Font scoreFont;
     private Font gameOverFont;
 
+    private boolean gameOver;
+
     public Score() {
-        score1 = 0;
-        score2 = 0;
+
         scoreFont = new Font("Arial", Font.PLAIN, 30);
         gameOver = false;
-        winnerText = "";
         gameOverFont = new Font("Arial", Font.BOLD, 50);
+
+        score1 = 0;
+        score2 = 0;
     }
 
     public int getScore1() {
@@ -30,19 +32,19 @@ public class Score {
 
     public void updateScore1() {
         score1++;
-        checkGameOver();
+        gameOver();
     }
 
     public void updateScore2() {
         score2++;
-        checkGameOver();
+        gameOver();
     }
 
-    private void checkGameOver() {
-        if (score1 == 3) {
+    private void gameOver() {
+        if (score1 == 1) {
             gameOver = true;
             winnerText = "Player 1 Won!";
-        } else if (score2 == 3) {
+        } else if (score2 == 1) {
             gameOver = true;
             winnerText = "Player 2 Won!";
         }

@@ -3,18 +3,18 @@ package src;
 import java.awt.*;
 
 public class Ball extends Rectangle {
+
     public static final int BALL_DIAMETER = 20;
-    private static final int SPEED = 7;
+    private static int SPEED = 7;
 
 	private Score score;
 
-    private int velocityX;
-    private int velocityY;
+    private int velocityX, velocityY;
     private double rand, timer;
 
     public Ball(int x, int y) {
         super(x, y, BALL_DIAMETER, BALL_DIAMETER);
-        randomVelocity();
+        initialMovement();
         timer = 0;
     }
 
@@ -22,7 +22,7 @@ public class Ball extends Rectangle {
         this.score = score;
     }
 	
-    private void randomVelocity() {
+    private void initialMovement() {
 		rand = Math.random();
 
         if (rand < 0.5) {
@@ -44,35 +44,35 @@ public class Ball extends Rectangle {
     }
 
 	public void paddleCollision(Paddles paddle1, Paddles paddle2) {
-        if (intersects(paddle1) || intersects(paddle2)) {
-            velocityX = -velocityX; // Reverse the horizontal velocity
+        
+        if (intersects(paddle1.getBounds2D()) || intersects(paddle2.getBounds2D())) {
+            velocityX = -velocityX; 
         }
     }
 
-    public void boundaryCollision() {
-        if (y <= 0 || y >= GamePanel.GAME_HEIGHT - BALL_DIAMETER) {
-            velocityY = -velocityY; // Reverse the vertical velocity
+    public void screenCollision() {
+        if ((y <= 0) || (y >= GamePanel.GAME_HEIGHT - BALL_DIAMETER)) {
+            velocityY = -velocityY; 
         }
 
-        // Check if the ball has gone off-screen
-		if (x <= 0 || x >= GamePanel.GAME_WIDTH - BALL_DIAMETER) {
-            if (System.currentTimeMillis() - timer >= 1500) {
+		if ((x <= 0) || (x >= GamePanel.GAME_WIDTH - BALL_DIAMETER)) {
+            if ((System.currentTimeMillis() - timer) >= 1500) {
                 if (x <= 0) {
-                    score.updateScore2(); // Increment Player 2 score
+                    score.updateScore2(); 
                 } else {
-                    score.updateScore1(); // Increment Player 1 score
+                    score.updateScore1();
                 }
                 respawn();
             }
         } else {
-            timer = System.currentTimeMillis(); // Update the respawn time
+            timer = System.currentTimeMillis();
         }
     }
 
     public void respawn() {
         x = GamePanel.GAME_WIDTH / 2 - BALL_DIAMETER / 2;
         y = GamePanel.GAME_HEIGHT / 2 - BALL_DIAMETER / 2;
-        randomVelocity();
+        initialMovement();
     }
 
     public void draw(Graphics g) {

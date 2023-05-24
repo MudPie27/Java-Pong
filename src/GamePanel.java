@@ -14,17 +14,17 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     public Graphics graphics;
     public Paddles paddle1, paddle2;
     public Ball ball;
-    public Score score; 
+    public Score score;
 
     public GamePanel() {
 
-        paddle1 = new Paddles(0, (GAME_HEIGHT/2)-(Paddles.length/2));
-        paddle2 = new Paddles(790, (GAME_HEIGHT/2)-(Paddles.length/2));
+        paddle1 = new Paddles(0, (GAME_HEIGHT / 2) - (Paddles.length / 2));
+        paddle2 = new Paddles(790, (GAME_HEIGHT / 2) - (Paddles.length / 2));
 
         ball = new Ball(380, 250);
 
         score = new Score();
-        ball.setScore(score); 
+        ball.setScore(score);
 
         this.setFocusable(true);
         this.addKeyListener(this);
@@ -46,14 +46,14 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         paddle1.draw(g);
         paddle2.draw(g);
         ball.draw(g);
-        score.draw(g); 
+        score.draw(g);
     }
 
     public void move() {
         paddle1.move();
         paddle2.move();
         ball.move();
-        
+
         if ((score.getScore1() == 5) || (score.getScore2() == 5)) {
             gameEnd();
         }
@@ -61,22 +61,22 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
     public void checkCollision() {
 
-        if (paddle1.y <= 0) 
+        if (paddle1.y <= 0)
             paddle1.y = 0;
-        
-        if (paddle1.y >= (GAME_HEIGHT - Paddles.length)) 
+
+        if (paddle1.y >= (GAME_HEIGHT - Paddles.length))
             paddle1.y = (GAME_HEIGHT - Paddles.length);
 
-        if (paddle2.y <= 0) 
+        if (paddle2.y <= 0)
             paddle2.y = 0;
-        
-        if (paddle2.y >= (GAME_HEIGHT - Paddles.length)) 
+
+        if (paddle2.y >= (GAME_HEIGHT - Paddles.length))
             paddle2.y = (GAME_HEIGHT - Paddles.length);
 
-        ball.screenCollision(); 
+        ball.screenCollision();
         ball.paddleCollision(paddle1, paddle2);
     }
-    
+
     private void gameEnd() {
         paddle1 = new Paddles(0, (GAME_HEIGHT / 2) - (Paddles.length / 2));
         paddle2 = new Paddles(790, (GAME_HEIGHT / 2) - (Paddles.length / 2));

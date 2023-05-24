@@ -7,7 +7,7 @@ public class Ball extends Rectangle {
     public static final int BALL_DIAMETER = 20;
     private static int SPEED = 7;
 
-	private Score score;
+    private Score score;
 
     private int velocityX, velocityY;
     private double rand, timer;
@@ -18,12 +18,12 @@ public class Ball extends Rectangle {
         timer = 0;
     }
 
-	public void setScore(Score score) {
+    public void setScore(Score score) {
         this.score = score;
     }
-	
+
     private void initialMovement() {
-		rand = Math.random();
+        rand = Math.random();
 
         if (rand < 0.5) {
             velocityX = -SPEED;
@@ -38,22 +38,22 @@ public class Ball extends Rectangle {
         }
     }
 
-	public void paddleCollision(Paddles paddle1, Paddles paddle2) {
-        
+    public void paddleCollision(Paddles paddle1, Paddles paddle2) {
+
         if (intersects(paddle1.getBounds2D()) || intersects(paddle2.getBounds2D())) {
-            velocityX = -velocityX; 
+            velocityX = -velocityX;
         }
     }
 
     public void screenCollision() {
         if ((y <= 0) || (y >= GamePanel.GAME_HEIGHT - BALL_DIAMETER)) {
-            velocityY = -velocityY; 
+            velocityY = -velocityY;
         }
 
-		if ((x <= 0) || (x >= GamePanel.GAME_WIDTH - BALL_DIAMETER)) {
+        if ((x <= 0) || (x >= GamePanel.GAME_WIDTH - BALL_DIAMETER)) {
             if ((System.currentTimeMillis() - timer) >= 1500) {
                 if (x <= 0) {
-                    score.updateScore2(); 
+                    score.updateScore2();
                 } else {
                     score.updateScore1();
                 }

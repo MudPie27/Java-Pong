@@ -1,4 +1,4 @@
-package src;
+// Keeps track of score and win conditions
 
 import java.awt.*;
 
@@ -7,13 +7,13 @@ public class Score {
     // variables
     private int score1, score2;
     private String winMessage;
-    private boolean gameOver;
+    public static boolean gameOver;
 
     // font objects
     private Font scoreFont;
     private Font winFont;
 
-    // constructor 
+    // constructor
     public Score() {
         // font details
         scoreFont = new Font("Arial", Font.PLAIN, 30);
@@ -44,7 +44,6 @@ public class Score {
         score2++;
         gameOver();
     }
-
 
     // if either player hits 5 points, they win
     private void gameOver() {

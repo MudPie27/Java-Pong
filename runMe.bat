@@ -4,7 +4,7 @@ javac GamePanel.java
 javac Main.java
 javac Paddles.java
 javac Score.java
-javac SoundEffects.java
-
-java Main.java
+javac Music.java
+pause
+java Main
 pause

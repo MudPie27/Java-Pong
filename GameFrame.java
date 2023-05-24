@@ -5,7 +5,7 @@ public class GameFrame extends JFrame{
 
   GamePanel panel;
   // details for the game window that pops up
-  public GameFrame(){
+  public GameFrame() {
     panel = new GamePanel(); 
     this.add(panel);
     this.setTitle("Pong"); 

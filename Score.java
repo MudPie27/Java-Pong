@@ -1,5 +1,3 @@
-// Keeps track of score and win conditions
-
 import java.awt.*;
 
 public class Score {

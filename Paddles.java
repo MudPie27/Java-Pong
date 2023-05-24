@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -68,7 +67,7 @@ public class Paddles extends Rectangle {
 	    }
 	}
 	
-	// sets velocity to 0, 15 or =15 depending on which button is pressed/released
+	// sets velocity to 0, 15 or -15 depending on which button is pressed/released
 	public void updateVelocity(int speed) {
 		velocity = speed;
     }

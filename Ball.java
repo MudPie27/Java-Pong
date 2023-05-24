@@ -1,5 +1,3 @@
-// Code for ball object
-
 import java.awt.*;
 
 public class Ball extends Rectangle {
@@ -72,7 +70,7 @@ public class Ball extends Rectangle {
                 respawn(); // respawn ball
             }
         } else {
-            timer = System.currentTimeMillis();
+            timer = System.currentTimeMillis(); // reset the ball respawn timer
         }
     }
 

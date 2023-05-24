@@ -1,11 +1,3 @@
-/*
- ICS4U1-3 GUI assignment
- PONG
- Challenge feature: music
- Aseer Baset
- 23/05/2023
-*/
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
